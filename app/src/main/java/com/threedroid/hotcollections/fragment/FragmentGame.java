@@ -12,6 +12,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 import com.threedroid.hotcollections.R;
 
@@ -22,6 +23,7 @@ public class FragmentGame extends android.support.v4.app.Fragment {
 
     private String mUrl;
     private WebView mWebView;
+    private ProgressBar mProgress;
 
     public static FragmentGame launch(String url){
         FragmentGame fragment = new FragmentGame();
@@ -42,6 +44,7 @@ public class FragmentGame extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_game, null);
         mWebView = (WebView) root.findViewById(R.id.webView);
+        mProgress = (ProgressBar) root.findViewById(R.id.progressBar);
         return root;
     }
 
@@ -50,10 +53,23 @@ public class FragmentGame extends android.support.v4.app.Fragment {
         super.onActivityCreated(savedInstanceState);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setWebChromeClient(new WebChromeClient(){
+
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+                title.replaceAll("7724游戏", "");
+                title.replaceAll("-7724游戏", "");
+                getActivity().setTitle(title);
+            }
+
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 // TODO Auto-generated method stub
                 super.onProgressChanged(view, newProgress);
+
+                if(newProgress > 20){
+                    mProgress.setVisibility(View.GONE);
+                }
             }
         });
         mWebView.setWebViewClient(new WebViewClient() {
@@ -61,11 +77,13 @@ public class FragmentGame extends android.support.v4.app.Fragment {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
             }
+
             @Override
             public void onPageStarted(WebView view, String url,
                                       Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
             }
+
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
                 return true;
@@ -73,5 +91,29 @@ public class FragmentGame extends android.support.v4.app.Fragment {
 
         });
         mWebView.loadUrl(mUrl);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        mWebView.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        mWebView.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        mWebView.setWebChromeClient(null);
+        mWebView.setWebViewClient(null);
+        mWebView.stopLoading();
+        mWebView = null;
     }
 }
