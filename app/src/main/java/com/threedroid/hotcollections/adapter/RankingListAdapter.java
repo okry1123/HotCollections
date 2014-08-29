@@ -6,7 +6,11 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.threedroid.hotcollections.R;
+import com.threedroid.hotcollections.bean.GameData;
 import com.threedroid.hotcollections.ui.imageloader.ImageLoaderView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -14,7 +18,15 @@ import butterknife.InjectView;
 /**
  * Created by mr on 14-8-26.
  */
-public class MainListAdapter extends BaseArrayAdapter {
+public class RankingListAdapter extends BaseArrayAdapter {
+
+    private List<GameData> mDataList;
+    public RankingListAdapter(List<GameData> list){
+        if(list != null)
+            mDataList = list;
+        else
+            mDataList = new ArrayList<GameData>();
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -25,14 +37,19 @@ public class MainListAdapter extends BaseArrayAdapter {
         }
         ViewHolder holder = (ViewHolder) convertView.getTag();
         holder.image.displayRoundCorner(15);
-        holder.image.setImageUrl("http://img5.imgtn.bdimg.com/it/u=398156607,146149448&fm=23&gp=0.jpg");
-        holder.text.setText("position:" + position);
+        holder.image.setImageUrl(getItem(position).game_logo);
+        holder.text.setText(getItem(position).game_name);
         return convertView;
     }
 
     @Override
+    public GameData getItem(int position) {
+        return mDataList.get(position);
+    }
+
+    @Override
     public int getCount() {
-        return 20;
+        return mDataList.size();
     }
 
     static class ViewHolder {

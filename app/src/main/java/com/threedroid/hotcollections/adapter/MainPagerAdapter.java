@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.ListFragment;
 
 import com.threedroid.hotcollections.fragment.InfoListFragment;
+import com.threedroid.hotcollections.fragment.NewListFragment;
+import com.threedroid.hotcollections.fragment.RankingListFragment;
 
 /**
  * Created by mr on 14-8-26.
@@ -19,11 +21,11 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int i) {
         switch(i) {
             case 0:
-                ListFragment f = new ListFragment();
-                f.setListAdapter(new MainListAdapter());
+                RankingListFragment f = new RankingListFragment();
+//                f.setListAdapter(new MainListAdapter());
                 return f;
             case 1:
-                return new InfoListFragment();
+                return new NewListFragment();
             case 2:
                 return new InfoListFragment();
         }

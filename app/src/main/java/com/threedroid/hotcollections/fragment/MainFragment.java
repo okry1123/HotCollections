@@ -3,17 +3,12 @@ package com.threedroid.hotcollections.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.ListFragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.threedroid.hotcollections.R;
-import com.threedroid.hotcollections.adapter.MainListAdapter;
 import com.threedroid.hotcollections.adapter.MainPagerAdapter;
 import com.threedroid.hotcollections.ui.AbsTabView;
 import com.threedroid.hotcollections.ui.MainTab;
