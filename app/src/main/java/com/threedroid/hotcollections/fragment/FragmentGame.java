@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -53,23 +54,17 @@ public class FragmentGame extends android.support.v4.app.Fragment {
             public void onProgressChanged(WebView view, int newProgress) {
                 // TODO Auto-generated method stub
                 super.onProgressChanged(view, newProgress);
-
-                ((ActionBarActivity)getActivity()).getSupportActionBar().show();
             }
         });
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-
-                ((ActionBarActivity)getActivity()).setProgressBarIndeterminateVisibility(false);
             }
             @Override
             public void onPageStarted(WebView view, String url,
                                       Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-
-                ((ActionBarActivity)getActivity()).setProgressBarIndeterminateVisibility(true);
             }
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);

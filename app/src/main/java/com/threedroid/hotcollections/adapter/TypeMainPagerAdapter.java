@@ -3,37 +3,39 @@ package com.threedroid.hotcollections.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.ListFragment;
 
 import com.threedroid.hotcollections.fragment.NewListFragment;
 import com.threedroid.hotcollections.fragment.RankingListFragment;
 import com.threedroid.hotcollections.fragment.TypeGridFragment;
+import com.threedroid.hotcollections.fragment.TypeNewListFragment;
+import com.threedroid.hotcollections.fragment.TypeRankingListFragment;
 
 /**
  * Created by mr on 14-8-26.
  */
-public class MainPagerAdapter extends FragmentPagerAdapter {
-    public MainPagerAdapter(FragmentManager fm) {
+public class TypeMainPagerAdapter extends FragmentPagerAdapter {
+
+    private int mGameType;
+
+    public TypeMainPagerAdapter(FragmentManager fm, int gametype) {
         super(fm);
+
+        mGameType = gametype;
     }
 
     @Override
     public Fragment getItem(int i) {
         switch(i) {
             case 0:
-                RankingListFragment f = new RankingListFragment();
-//                f.setListAdapter(new MainListAdapter());
-                return f;
+                return TypeNewListFragment.launch(mGameType);
             case 1:
-                return new NewListFragment();
-            case 2:
-                return new TypeGridFragment();
+                return TypeRankingListFragment.launch(mGameType);
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 }

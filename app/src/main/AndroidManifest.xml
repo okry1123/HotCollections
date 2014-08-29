@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.threedroid.hotcollections" >
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:name=".MyApplication"
@@ -24,6 +25,22 @@
         <activity
             android:name=".activity.GameActivity"
             android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activity.TypeGameListActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        /*************************友盟自动更新*********************/
+        <meta-data android:value="54001d92fd98c502a703f7ba" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="default" android:name="UMENG_CHANNEL"/>
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
     </application>
 
