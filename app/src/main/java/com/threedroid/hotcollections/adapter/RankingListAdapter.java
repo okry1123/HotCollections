@@ -39,6 +39,7 @@ public class RankingListAdapter extends BaseArrayAdapter {
         holder.image.displayRoundCorner(15);
         holder.image.setImageUrl(getItem(position).game_logo);
         holder.text.setText(getItem(position).game_name);
+        holder.click.setText("热度" + getItem(position).game_downclick);
         return convertView;
     }
 
@@ -57,6 +58,8 @@ public class RankingListAdapter extends BaseArrayAdapter {
         ImageLoaderView image;
         @InjectView(R.id.main_list_text)
         TextView text;
+        @InjectView(R.id.main_list_click)
+        TextView click;
 
         public ViewHolder(View root) {
             ButterKnife.inject(this, root);

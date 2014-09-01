@@ -19,7 +19,7 @@ public class GameActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String url = getIntent().getStringExtra("url");
