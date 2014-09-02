@@ -15,6 +15,7 @@ import java.io.IOException;
 public class Util {
     public static void saveMyBitmap(Bitmap bmp, String filename) {
         File f = new File(MyApplication.getAppContext().getExternalCacheDir().getAbsolutePath() + filename);
+        f.delete();
         try {
             f.createNewFile();
         } catch (IOException e) {

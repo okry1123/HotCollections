@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Picture;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -24,9 +25,9 @@ import com.threedroid.hotcollections.R;
 import com.threedroid.hotcollections.onekeyshare.OnekeyShare;
 import com.threedroid.hotcollections.util.Util;
 
-import java.util.logging.Handler;
-
 import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.wechat.favorite.WechatFavorite;
 
 /**
  * Created by Administrator on 2014-8-28.
@@ -165,10 +166,27 @@ public class FragmentGame extends android.support.v4.app.Fragment {
     }
 
     private void showShare() {
-        Util.saveMyBitmap(captureWebView(), "liulanqijietu.png");
+        Thread thread = new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        Util.saveMyBitmap(captureWebView(), "liulanqijietu.png");
+                    }
+                }
+        );
+        thread.setPriority(Thread.MIN_PRIORITY);
+        thread.start();
+//        new Handler().post(new Runnable() {
+//            @Override
+//            public void run() {
+//                Util.saveMyBitmap(captureWebView(), "liulanqijietu.png");
+//            }
+//        });
 
         ShareSDK.initSDK(getActivity());
         OnekeyShare oks = new OnekeyShare();
+        oks.addHiddenPlatform(WechatFavorite.NAME);
+//        oks.setViewToShare(mWebView);
         //关闭sso授权
 //        oks.disableSSOWhenAuthorize();
 
