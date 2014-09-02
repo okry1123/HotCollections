@@ -10,11 +10,28 @@
         android:layout_width="60dp"
         android:layout_height="60dp" />
 
-    <TextView
-        android:id="@+id/main_list_text"
-        android:layout_marginLeft="8dp"
-        android:textSize="14sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="8dp">
+
+        <TextView
+            android:id="@+id/main_list_text"
+            android:layout_gravity="center_vertical"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/main_list_click"
+            android:layout_gravity="center_vertical"
+            android:textSize="17sp"
+            android:textColor="#515151"
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 </LinearLayout>

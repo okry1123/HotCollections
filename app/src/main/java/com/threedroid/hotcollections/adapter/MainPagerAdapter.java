@@ -5,9 +5,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.ListFragment;
 
-import com.threedroid.hotcollections.fragment.InfoListFragment;
 import com.threedroid.hotcollections.fragment.NewListFragment;
 import com.threedroid.hotcollections.fragment.RankingListFragment;
+import com.threedroid.hotcollections.fragment.TypeGridFragment;
 
 /**
  * Created by mr on 14-8-26.
@@ -27,7 +27,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return new NewListFragment();
             case 2:
-                return new InfoListFragment();
+                return new TypeGridFragment();
         }
         return null;
     }

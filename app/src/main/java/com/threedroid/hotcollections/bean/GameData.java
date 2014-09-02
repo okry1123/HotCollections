@@ -33,13 +33,13 @@ public class GameData {
     public static final String SHOW_TYPE_PH_INNER = "list_ph_3";
     public static final String SHOW_TYPE_ZX_INNER = "list_zx_3";
 
-    public static final String GAME_TYPE_JUESE = "29";
-    public static final String GAME_TYPE_DONGZUO = "31";
-    public static final String GAME_TYPE_FEIXING = "32";
-    public static final String GAME_TYPE_XIUXIAN = "33";
-    public static final String GAME_TYPE_TIYU = "34";
-    public static final String GAME_TYPE_SAICHE = "36";
-    public static final String GAME_TYPE_QIPAI = "37";
-    public static final String GAME_TYPE_MAOXIAN = "39";
+    public static final int GAME_TYPE_JUESE = 29;
+    public static final int GAME_TYPE_DONGZUO = 31;
+    public static final int GAME_TYPE_FEIXING = 32;
+    public static final int GAME_TYPE_XIUXIAN = 33;
+    public static final int GAME_TYPE_TIYU = 34;
+    public static final int GAME_TYPE_SAICHE = 36;
+    public static final int GAME_TYPE_QIPAI = 37;
+    public static final int GAME_TYPE_MAOXIAN = 39;
 
 }
