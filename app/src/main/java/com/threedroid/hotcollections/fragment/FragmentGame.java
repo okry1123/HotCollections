@@ -166,22 +166,22 @@ public class FragmentGame extends android.support.v4.app.Fragment {
     }
 
     private void showShare() {
-        Thread thread = new Thread(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        Util.saveMyBitmap(captureWebView(), "liulanqijietu.png");
-                    }
-                }
-        );
-        thread.setPriority(Thread.MIN_PRIORITY);
-        thread.start();
-//        new Handler().post(new Runnable() {
-//            @Override
-//            public void run() {
-//                Util.saveMyBitmap(captureWebView(), "liulanqijietu.png");
-//            }
-//        });
+//        Thread thread = new Thread(
+//                new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Util.saveMyBitmap(captureWebView(), "liulanqijietu.png");
+//                    }
+//                }
+//        );
+//        thread.setPriority(Thread.MIN_PRIORITY);
+//        thread.start();
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                Util.saveMyBitmap(captureWebView(), "liulanqijietu.png");
+            }
+        });
 
         ShareSDK.initSDK(getActivity());
         OnekeyShare oks = new OnekeyShare();
